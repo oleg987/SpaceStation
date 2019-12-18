@@ -8,20 +8,22 @@ namespace SpaceStation
 {
     class Asteroid : ISpaceObject
     {
-        public int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int X { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Y { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        private static int currentId = 1;
 
-        public Asteroid(int id, int x, int y)
+        public int Id { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+
+        public Asteroid(int x, int y)
         {
-            Id = id;
+            Id = currentId++;
             X = x;
             Y = y;
         }
 
         public double GetDistance(ISpaceObject spaceObject)
         {
-            throw new NotImplementedException();
+            return (Math.Sqrt(Math.Pow(X - spaceObject.X, 2) + Math.Pow(Y - spaceObject.Y, 2)));
         }
     }
 }
